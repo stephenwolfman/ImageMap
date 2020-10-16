@@ -97,6 +97,8 @@ exports.uploader = async function(req, res){
       .then(value => {
         console.log(value) // 1
       })
+
+     //Promises goes here? 
 };
 
 ImageGPSDataReturn = async (imgBuffer) =>{
