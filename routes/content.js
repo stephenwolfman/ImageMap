@@ -28,9 +28,7 @@ MongoClient.connect(connectionString, function(err, client) {
 
 
 exports.intro = function(req, res) {
-    
     res.send("Map Images App");
-    
 };
  
 
@@ -47,7 +45,7 @@ exports.imageList = function(req, res) {
             mapImagesData['MapImages'] = items;
             fs.readFile(filename, "utf8", function(err, data) {
                 if (err) throw err;
-                var html = mustache.to_html(data, mapImagesData);
+                var html = mustache.render(data, mapImagesData);
                 res.send(html);
             });
         });
