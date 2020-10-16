@@ -12,7 +12,7 @@ const gridFsStorage = require("multer-gridfs-storage");
 var mongoClient;// = new MongoClient(new Server('localhost', 27017));
 var stream = require('stream');
 var base64 = require('base-64');
-
+var dms2dec = require('dms2dec');
 
 //imaging
 var ExifImage = require('exif').ExifImage;
@@ -93,15 +93,12 @@ exports.uploader = async function(req, res){
     //ImageGPSDataReturn(res,imgBuffer);
     //const ret = await ImageGPSDataReturn(imgBuffer)
     //ImageGPSDataReturn(imgBuffer).then(value =>{console.log(value);res.jsonp(value)})
-    ImageGPSDataReturn(imgBuffer)
-      .then(value => {
-        console.log(value) // 1
-      })
+    ImageGPSDataReturn(res,imgBuffer);
 
      //Promises goes here? 
 };
 
-ImageGPSDataReturn = async (imgBuffer) =>{
+ImageGPSDataReturn = async (res,imgBuffer) =>{
 
     try {
     new ExifImage({ image : imgBuffer }, function (error, exifData) {
@@ -115,14 +112,18 @@ ImageGPSDataReturn = async (imgBuffer) =>{
             imgExifData = exifData;
 
             imgLat = imgExifData.gps.GPSLatitude;
+            imgLatRef = imgExifData.gps.GPSLatitudeRef;
             imgLng = imgExifData.gps.GPSLongitude;
-
+            imgLngRef = imgExifData.gps.GPSLongitudeRef;
+            var latlng = dms2dec(imgLat, imgLatRef, imgLng, imgLngRef);
              var objLatLng = new Object();
-             objLatLng.imgLat = imgLat;
+             objLatLng.imgCoords = latlng;
+             objLatLng.imgLat  = imgLat;
+             objLatLng.imgLatRef  = imgLatRef;
              objLatLng.imgLng  = imgLng;
+             objLatLng.imgLngRef  = imgLngRef;
             //uploadReturn(res,objLatLng);
-            console.log(objLatLng);
-            return objLatLng;
+            res.jsonp(objLatLng);
           }
     });
     } catch (error) {
