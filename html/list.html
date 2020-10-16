@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>
+Map Images List view
+</title>
+<script src="Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="Scripts/jquery-ui-1.8.20.min.js" type="text/javascript"></script>
+<script src="Scripts/jquery.tablescroll.js" type="text/javascript"></script>
+<script src="Scripts/jquery.blockUI.js" type="text/javascript"></script>
+<script src="Scripts/jquery.popupoverlay.js"></script>
+        <link href="Content/site.css" rel="stylesheet" media="screen" />
+        <link href="Content/tablescroll.css" rel="stylesheet" media="screen" />
+<script src="Scripts/MapImages.js" type="text/javascript"></script>
+</head>
+<body>
+
+<h2>Add Map Image</h2>
+<div>
+
+    <span>Select file to upload :</span>
+    <input id="flMapImage" type="file" accept="image/*"  name="fileUp" multiple="multiple" />
+    <input id="btnUploadFile" type="submit" value="Upload" />
+</div>
+
+      List view of all Map Images
+    <table id="tblMapImages">
+        <thead id="tblHMapImages">
+			    <td></td>
+			    <td>Id</td>
+			    <td>Lat</td>
+			    <td>Long</td>
+			    <td>Desc</td>
+			    <td>Sent By</td>
+			    <td>Comment</td>
+			    <td>ImageUrl</td>
+			    <td>VideoURL</td>
+      	</thead>
+      	<tbody id="tblBMapImages">
+  			{{#MapImages}}
+			<tr>
+				<td class="editLink" mapImageId="{{MapImageId}}">edit</td>	
+			    <td>{{MapImageId}}</td>
+			    <td>{{Lat}}</td>
+			    <td>{{Long}}</td>
+			    <td>{{Desc}}</td>
+			    <td>{{SentBy}}</td>
+			    <td>{{Comment}}</td>
+			    <td>{{ImageUrl}}</td>
+			    <td>{{VideoURL}}</td>
+			</tr>
+			{{/MapImages}}
+      	</tbody>
+      </table>
+
+
+
+        </div>
+    <div id="dvImageMapDetail">
+        <ul style="list-style:none;">
+            <li><span style="display:inline-block; width:100px;">Lat</span><input type="text" name="Lat" id="txtLat" /></li>
+            <li><span style="display:inline-block; width:100px;">Long</span><input type="text" id="txtLong" /></li>
+            <li><span style="display:inline-block; width:100px;">Desc</span><input type="text" id="txtDesc" /></li>
+            <li><span style="display:inline-block; width:100px;">Sent By</span><input type="text" id="txtSentBy" /></li>
+            <li><span style="display:inline-block; width:100px;">Comment</span><input type="text" id="txtComment" /></li>
+            <li><span style="display:inline-block; width:100px;">Image Url</span><input type="text" id="txtImageUrl"/></li>
+            <li><span style="display:inline-block; width:100px;">Video Url</span><input type="text" id="txtVideoUrl"/></li>
+            <li><img id="imgMapImage" style="width:300px;height:200px;" src=""/></li>
+            <li><iframe id="iVideo" width="300" height="200"  src="" allowfullscreen="true"></iframe></li>
+
+        </ul>
+        <input id="btnImageMapCancel" type="button" value="Cancel" onclick="$('#dvImageMapDetail').popup('hide'); $('#imgMapImage').attr('src', ''); $('#iVideo').attr('src', '');" />        
+        <input id="btnMapImageSave" type="button" value="Save" onclick="UpdateMapImage(this);" />
+    </div>
+
+<!--<form action="/api/MapImages" method="post" enctype="multipart/form-data">-->
+
+
+    <div id="dvImageDisplay">
+        <img id="imgDisplay" style="height:200px;width:300px;"  />
+
+    </div>
+</body>

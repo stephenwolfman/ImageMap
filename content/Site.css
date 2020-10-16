@@ -1,0 +1,67 @@
+body {
+     font-family: "Segoe UI",Candara,"Bitstream Vera Sans","DejaVu Sans","Bitstream Vera Sans","Trebuchet MS",Verdana,"Verdana Ref",sans-serif;
+     font-size: 11px;
+}
+
+#tblMapImages {
+     border-collapse: collapse;
+}
+
+#tblHMapImages tr th {
+     padding-top: 5px;
+     padding-bottom: 5px;
+}
+
+#dvImageMapDetail {
+     background-color: #FFFFFF;
+     border: 1px solid #FFFFFF;
+     padding: 10px;
+     width: 400px;
+}
+
+#dvImageMapDetail ul {
+     list-style: none outside none;
+}
+
+#dvImageMapDetail ul li {
+     margin-top: 10px;
+}
+
+#txtImageUrl, #txtVideoUrl {
+     width: 250px;
+}
+
+#imgMapImage {
+     border: 1px solid #000000;
+}
+
+#btnMapImageSave, #btnImageMapCancel {
+     background-color: #FFFFFF;
+     border: 2px solid #00492F;
+     color: #00492F;
+     cursor: pointer;
+     float: right;
+}
+
+#btnImageMapCancel {
+     float: left;
+}
+
+#btnMapImageSave:hover, #btnImageMapCancel:hover {
+     background-color: #00492F;
+     border: 2px solid #000000;
+     color: #FFFFFF;
+     cursor: pointer;
+}
+
+#btnMapImageSave:active, #btnImageMapCancel:active {
+     border-color: #000000;
+     border-style: solid;
+     border-width: 3px 3px 1px 1px;
+}
+
+.editLink {
+     cursor: pointer;
+     font-weight: bold;
+     text-decoration: underline;
+}
