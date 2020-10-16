@@ -5,12 +5,13 @@ var mapimagesapi = require('./routes/mapimages');
 var content = require('./routes/content');
 
 var app = express();
+/*
 var bodyParser = require('body-parser');
 var busboy = require('connect-busboy');
 var base64 = require('base-64');
 
 const fileUpload = require('express-fileupload');
-/*
+
 app.use(fileUpload());
 
 app.use(bodyParser.urlencoded({ extended: true }));
