@@ -66,4 +66,6 @@ app.get("/Content/site.css", function (req, res) {
 //app.listen(port, function() {
 //  console.log("Listening on " + port);
 //});
+const PORT = process.env.PORT || "1343"
+
 app.set("port",PORT);
