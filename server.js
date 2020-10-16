@@ -10,6 +10,7 @@ var busboy = require('connect-busboy');
 var base64 = require('base-64');
 
 const fileUpload = require('express-fileupload');
+/*
 app.use(fileUpload());
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,13 +26,9 @@ app.get('/imagelist', content.imageList);
 app.get('/imagemap', content.imageMap);
 app.get('/images/:id', content.imageMap);
 app.get('/imagehandler/:id', content.imageHandler);
-//app.get('/api/uploader',mapimagesapi.uploader);
 app.post('/api/uploader', mapimagesapi.uploader);
 
-/*app.post("/api/uploader", async(req, res) =>{
-     mapimagesapi.uploader(req, res);
-});*/
-//Script files
+
 app.get("/scripts/imagemap.js", function (req, res) {
     res.sendFile(__dirname + '/scripts/imagemap.js');
 });
@@ -59,9 +56,8 @@ app.get("/Content/tablescroll.css", function (req, res) {
 app.get("/Content/site.css", function (req, res) {
     res.sendFile(__dirname + '/content/site.css');
 });
+*/
 
-
-//Get port dynamically in prod/run on 1343 dev
 var port = Number(process.env.PORT || 1343);
     app.listen(port, function() {
   console.log("Listening on " + port);
