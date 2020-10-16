@@ -1,6 +1,9 @@
 {
   "name": "mapimages",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.13.1"
+  },
   "description": "Image Map Manager",
   "main": "index.js",
   "scripts": {
